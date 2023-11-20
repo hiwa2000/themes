@@ -131,7 +131,7 @@ class MyApp extends StatelessWidget {
                   color: Colors.grey.withOpacity(1),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3), // changes the position of the shadow
+                  offset: Offset(0, 9), // changes the position of the shadow
                 ),
               ],
             ),
