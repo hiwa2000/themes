@@ -1,39 +1,101 @@
+// import 'package:flutter/material.dart';
+// import 'package:google_fonts/google_fonts.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Google Fonts Example'),
+//         ),
+//         body: Center(
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               Text(
+//                 'Schriftart 1',
+//                 style: GoogleFonts.lato(fontSize: 20),
+//               ),
+//               Text(
+//                 'Schriftart 2',
+//                 style: GoogleFonts.roboto(fontSize: 25),
+//               ),
+//               Text(
+//                 'Schriftart 3',
+//                 style: GoogleFonts.poppins(fontSize: 30),
+//               ),
+//               Text(
+//                 'Schriftart 4',
+//                 style: GoogleFonts.oswald(fontSize: 35),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Google Fonts Example'),
+          title: const Text('SizedBox,Text Overflow Example'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Schriftart 1',
-                style: GoogleFonts.lato(fontSize: 20),
-              ),
-              Text(
-                'Schriftart 2',
-                style: GoogleFonts.roboto(fontSize: 25),
-              ),
-              Text(
-                'Schriftart 3',
-                style: GoogleFonts.poppins(fontSize: 30),
-              ),
-              Text(
-                'Schriftart 4',
-                style: GoogleFonts.oswald(fontSize: 35),
-              ),
-            ],
+        body: const Center(
+          child: SizedBox(
+            width: 200,
+            height: 30,
+            child: MyExpandingText(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyExpandingText extends StatefulWidget {
+  const MyExpandingText({super.key});
+
+  @override
+  _MyExpandingTextState createState() => _MyExpandingTextState();
+}
+
+class _MyExpandingTextState extends State<MyExpandingText> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isExpanded = !isExpanded;
+        });
+      },
+      child: Container(
+        width: 200,
+        height: isExpanded ? null : 30,
+        color: Colors.blue,
+        child: const SingleChildScrollView(
+          child: Text(
+            'Hier ist ein langer Text, der höher als die Box ist und sich bei einem Klick ausklappt.',
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),
